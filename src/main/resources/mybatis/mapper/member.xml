@@ -4,12 +4,12 @@
 <mapper namespace="com.mycompany.webapp.dao.MemberDao">
 	<insert id="insert" parameterType="member">
 		INSERT INTO member 
-		(mid, mname, mpassword, menabled, mrole, memail) 
-		VALUES(#{mid}, #{mname}, #{mpassword}, #{menabled}, #{mrole}, #{memail})
+		(mid, mname, mpassword, menabled, mgrade, memail) 
+		VALUES(#{mid}, #{mname}, #{mpassword}, #{menabled}, #{mgrade}, #{memail})
 	</insert>
 	
 	<select id="selectByMid" parameterType="string" resultType="member">
-		SELECT mid, mname, mpassword, menabled, mrole, memail
+		SELECT mid, mname, mpassword, menabled, mgrade, memail
 		FROM member
 		WHERE mid=#{mid}
 	</select>
