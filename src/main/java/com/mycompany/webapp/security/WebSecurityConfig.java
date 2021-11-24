@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// 요청 경로 권한 설정
-		http.authorizeRequests().antMatchers("/board/**").authenticated().antMatchers("/**").permitAll();
+		http.authorizeRequests().antMatchers("/member/**").authenticated().antMatchers("/**").permitAll();
 
 		// 세션 비활성화
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

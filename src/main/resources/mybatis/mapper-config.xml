@@ -6,6 +6,10 @@
 		<typeAlias type="com.mycompany.webapp.dto.Board" alias="board"/>
 		<typeAlias type="com.mycompany.webapp.dto.Pager" alias="pager"/>
 		<typeAlias type="com.mycompany.webapp.dto.Member" alias="member"/>
+		<typeAlias type="com.mycompany.webapp.dto.WishList" alias="wishlist"/>
+		<typeAlias type="com.mycompany.webapp.dto.Coupon" alias="coupon"/>
+		<typeAlias type="com.mycompany.webapp.dto.Cart" alias="mycart"/>
+		<typeAlias type="com.mycompany.webapp.dto.QnA" alias="qna"/>
 	</typeAliases>	
 </configuration>
 

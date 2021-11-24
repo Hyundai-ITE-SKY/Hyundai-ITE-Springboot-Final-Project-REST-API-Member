@@ -130,7 +130,7 @@
 					var mid = $("#loginForm [name=mid]").val();
 					var mpassword = $("#loginForm [name=mpassword]").val();
 					$.ajax({
-						url: "[(@{/member/login1})]",
+						url: "[(@{/login})]",
 						method: "post",
 						data: {mid, mpassword}
 					}).done((data) => {

@@ -1,11 +1,17 @@
 package com.mycompany.webapp.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.MemberDao;
+import com.mycompany.webapp.dto.Cart;
+import com.mycompany.webapp.dto.Coupon;
 import com.mycompany.webapp.dto.Member;
+import com.mycompany.webapp.dto.QnA;
+import com.mycompany.webapp.dto.WishList;
 
 @Service
 public class MemberService {
@@ -57,5 +63,25 @@ public class MemberService {
 			e.printStackTrace();
 			return LoginResult.FAIL;
 		}
+	}
+	
+	public Member selectInfo(String mid) {
+		return memberDao.selectInfoByMid(mid);
+	}
+
+	public List<WishList> selectWishlist(String mid) {
+		return memberDao.selectWishlist(mid);
+	}
+
+	public List<Coupon> selectCouponlist(String mid) {
+		return memberDao.selectCouponlist(mid);
+	}
+
+	public List<Cart> selectMycart(String mid) {
+		return memberDao.selectMycart(mid);
+	}
+
+	public List<QnA> selectQnaList(String mid) {
+		return memberDao.selectQnaList(mid);
 	}
 }

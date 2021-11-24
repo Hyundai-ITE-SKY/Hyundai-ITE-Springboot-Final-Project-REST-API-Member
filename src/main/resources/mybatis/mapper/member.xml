@@ -13,4 +13,35 @@
 		FROM member
 		WHERE mid=#{mid}
 	</select>
+	
+	<select id="selectInfoByMid" parameterType="string" resultType="member">
+		select mid, mname, mtel, mzipcode, maddress1, maddress2, mdate, mpoint
+		from member
+		where mid=#{mid}
+	</select>
+	
+	<select id="selectWishlist" parameterType="string" resultType="wishlist">
+		select mid, pid
+		from wishlist
+		where mid=#{mid}
+		order by pid
+	</select>
+	
+	<select id="selectCouponlist" parameterType="string" resultType="coupon">
+		select ccode, eid, mid, cname, cstartdate, cenddate, cstate
+		from coupon
+		where mid=#{mid}
+	</select>
+	
+	<select id="selectMycart" parameterType="string" resultType="mycart">
+		select mid, pid, psize, pcolor, pamount
+		from mycart
+		where mid=#{mid}
+	</select>
+	
+	<select id="selectQnaList" parameterType="string" resultType="qna">
+		select qid, mid, qtitle, qcontent, qdate, qreplydate, qreplytitle, qreplycontent, qmanager
+		from qna
+		where mid=#{mid}
+	</select>
 </mapper> 
