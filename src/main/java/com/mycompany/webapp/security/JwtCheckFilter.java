@@ -45,6 +45,9 @@ public class JwtCheckFilter extends OncePerRequestFilter {
 				String authority = JwtUtil.getAuthority(claims);
 				log.info("mid: " + mid);
 				log.info("authority: " + authority);
+				
+				request.setAttribute("mid", mid);
+				
 				// Security 인증하기
 				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(mid, null,
 						AuthorityUtils.createAuthorityList(authority));
