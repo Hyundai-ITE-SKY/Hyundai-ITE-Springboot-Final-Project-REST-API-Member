@@ -59,21 +59,24 @@ public class MemberController {
 
 	// mid로 위시리스트 받아오기
 	@GetMapping("/wishlist")
-	public List<WishList> getWishList(@RequestParam String mid) {
+	public List<WishList> getWishList(HttpServletRequest request) {
+		String mid = request.getAttribute("mid").toString();
 		List<WishList> wishList = memberService.selectWishlist(mid);
 		return wishList;
 	}
 
 	// mid로 보유중인 쿠폰 받아오기
 	@GetMapping("/coupon")
-	public List<Coupon> getCouponList(@RequestParam String mid) {
+	public List<Coupon> getCouponList(HttpServletRequest request) {
+		String mid = request.getAttribute("mid").toString();
 		List<Coupon> couponList = memberService.selectCouponlist(mid);
 		return couponList;
 	}
 
 	// mid로 qna목록 받아오기
 	@GetMapping("/qna")
-	public List<QnA> getqnaList(@RequestParam String mid) {
+	public List<QnA> getqnaList(HttpServletRequest request) {
+		String mid = request.getAttribute("mid").toString();
 		List<QnA> qnaList = memberService.selectQnaList(mid);
 		log.info(mid);
 		log.info(qnaList.toString());
@@ -82,7 +85,8 @@ public class MemberController {
 
 	// 장바구니 불러오기
 	@GetMapping("/mycart")
-	public List<Cart> getMycart(@RequestParam String mid) {
+	public List<Cart> getMycart(HttpServletRequest request) {
+		String mid = request.getAttribute("mid").toString();
 		List<Cart> mycart = memberService.selectMycart(mid);
 		return mycart;
 	}
