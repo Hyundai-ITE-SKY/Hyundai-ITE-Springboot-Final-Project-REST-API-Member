@@ -9,13 +9,13 @@
 	</insert>
 	
 	<select id="selectByMid" parameterType="string" resultType="member">
-		SELECT mid, mname, mpassword, menabled, mgrade, memail
+		SELECT mid, mname, mpassword, menabled, mgrade, memail, mrole
 		FROM member
 		WHERE mid=#{mid}
 	</select>
 	
 	<select id="selectInfoByMid" parameterType="string" resultType="member">
-		select mid, mname, mtel, mzipcode, maddress1, maddress2, mdate, mpoint
+		select mid, mname, mtel, mzipcode, maddress1, maddress2, mdate, mpoint, mrole
 		from member
 		where mid=#{mid}
 	</select>
