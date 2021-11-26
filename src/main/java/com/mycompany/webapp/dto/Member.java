@@ -18,4 +18,5 @@ public class Member {
 	private Date mdate;
 	private int mpoint;
 	private boolean menabled;
+	private String mrole;
 }
