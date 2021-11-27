@@ -12,6 +12,3 @@
 		<typeAlias type="com.mycompany.webapp.dto.QnA" alias="qna"/>
 	</typeAliases>	
 </configuration>
-
-
-

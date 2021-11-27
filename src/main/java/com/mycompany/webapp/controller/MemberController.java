@@ -5,7 +5,9 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -90,4 +92,29 @@ public class MemberController {
 		List<Cart> mycart = memberService.selectMycart(mid);
 		return mycart;
 	}
+	
+	//mid, pid로 wishlist 추가
+	@PostMapping("/createwishlist")
+	public int createWishList(HttpServletRequest request, String pid) {
+		String mid = request.getAttribute("mid").toString();
+		WishList wishList = new WishList();
+		wishList.setMid(mid);
+		wishList.setPid(pid);
+		log.info(mid);
+		log.info(pid);
+		return memberService.createWishList(wishList);
+	}
+	
+	//mid, pid로 wishlist 삭제
+	@DeleteMapping("/deletewishlist")
+	public void deleteWishList(HttpServletRequest request, String pid) {
+		String mid = request.getAttribute("mid").toString();
+		WishList wishList = new WishList();
+		wishList.setMid(mid);
+		wishList.setPid(pid);
+		log.info(mid);
+		log.info(pid);
+		memberService.deleteWishList(wishList);
+	}
+	
 }

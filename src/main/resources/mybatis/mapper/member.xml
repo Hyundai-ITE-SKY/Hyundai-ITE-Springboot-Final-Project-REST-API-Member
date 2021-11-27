@@ -7,7 +7,7 @@
 		(mid, mname, mpassword, menabled, mgrade, memail) 
 		VALUES(#{mid}, #{mname}, #{mpassword}, #{menabled}, #{mgrade}, #{memail})
 	</insert>
-	
+		
 	<select id="selectByMid" parameterType="string" resultType="member">
 		SELECT mid, mname, mpassword, menabled, mgrade, memail, mrole
 		FROM member
@@ -44,4 +44,14 @@
 		from qna
 		where mid=#{mid}
 	</select>
+	
+	<insert id="createWishList" parameterType="wishlist">
+		INSERT INTO WISHLIST (mid, pid)
+		VALUES (#{mid}, #{pid})
+	</insert>
+	
+	<delete id="deleteWishList" parameterType="wishlist">
+		DELETE FROM WISHLIST WHERE mid=#{mid} AND pid=#{pid}
+	</delete>
+	
 </mapper> 

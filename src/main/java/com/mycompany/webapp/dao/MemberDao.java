@@ -19,4 +19,6 @@ public interface MemberDao {
 	public List<Coupon> selectCouponlist(String mid);
 	public List<Cart> selectMycart(String mid);
 	public List<QnA> selectQnaList(String mid);
+	public int createWishList(WishList wish);
+	public int deleteWishList(WishList wish);
 }

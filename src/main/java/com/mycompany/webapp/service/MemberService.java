@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.mycompany.webapp.controller.MemberController;
 import com.mycompany.webapp.dao.MemberDao;
 import com.mycompany.webapp.dto.Cart;
 import com.mycompany.webapp.dto.Coupon;
@@ -13,6 +14,9 @@ import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.QnA;
 import com.mycompany.webapp.dto.WishList;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class MemberService {
 	// 열거 타입 선언
@@ -83,5 +87,14 @@ public class MemberService {
 
 	public List<QnA> selectQnaList(String mid) {
 		return memberDao.selectQnaList(mid);
+	}
+	
+	public int createWishList(WishList wish) {
+		log.info("createService");
+		return memberDao.createWishList(wish);
+	}
+	
+	public void deleteWishList(WishList wish) {
+		memberDao.deleteWishList(wish);
 	}
 }
