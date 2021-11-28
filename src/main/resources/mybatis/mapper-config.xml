@@ -10,5 +10,6 @@
 		<typeAlias type="com.mycompany.webapp.dto.Coupon" alias="coupon"/>
 		<typeAlias type="com.mycompany.webapp.dto.Cart" alias="mycart"/>
 		<typeAlias type="com.mycompany.webapp.dto.QnA" alias="qna"/>
+		<typeAlias type="com.mycompany.webapp.dto.Event" alias="event"/>
 	</typeAliases>	
 </configuration>
