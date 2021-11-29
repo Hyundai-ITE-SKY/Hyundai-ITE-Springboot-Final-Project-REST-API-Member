@@ -1,15 +1,17 @@
 package com.mycompany.webapp.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mycompany.webapp.dto.Cart;
@@ -17,10 +19,8 @@ import com.mycompany.webapp.dto.Coupon;
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.QnA;
 import com.mycompany.webapp.dto.WishList;
-import com.mycompany.webapp.security.JwtUtil;
 import com.mycompany.webapp.service.MemberService;
 
-import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -117,4 +117,33 @@ public class MemberController {
 		memberService.deleteWishList(wishList);
 	}
 	
+	//장바구니 수정
+	@PostMapping("/update")
+	public void updateMyCart(HttpServletRequest request, Cart cart) {
+		String mid = request.getAttribute("mid").toString();
+		Cart updatecart = new Cart();
+		updatecart.setMid(mid);
+		updatecart.setPid(cart.getPid());
+		updatecart.setPcolor(cart.getPcolor());
+		updatecart.setPsize(cart.getPsize());
+		updatecart.setAftercolor(cart.getAftercolor());
+		updatecart.setAftersize(cart.getAftersize());
+		updatecart.setPamount(cart.getPamount());
+		memberService.updateCart(updatecart);
+	}
+	
+	//장바구니 삭제
+	@DeleteMapping("/{pid}/{pcolor}_{psize}")
+	public Map<String, String> deleteMycart(HttpServletRequest request, @PathVariable String pid, @PathVariable String psize, @PathVariable String pcolor) {
+		String mid = request.getAttribute("mid").toString();
+		Cart mycart = new Cart();
+		mycart.setMid(mid);
+		mycart.setPid(pid);
+		mycart.setPcolor(pcolor);
+		mycart.setPsize(psize);
+		memberService.deleteCartItem(mycart);
+		Map<String, String> map = new HashMap<>();
+		map.put("result", "success");
+		return map;
+	}
 }

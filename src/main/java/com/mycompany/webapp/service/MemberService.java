@@ -97,4 +97,15 @@ public class MemberService {
 	public void deleteWishList(WishList wish) {
 		memberDao.deleteWishList(wish);
 	}
+
+	public void deleteCartItem(Cart mycart) {
+		memberDao.deleteCartItem(mycart);
+	}
+
+	public void updateCart(Cart updatecart) {
+		memberDao.updateCart(updatecart);
+		
+	}
+
+	
 }

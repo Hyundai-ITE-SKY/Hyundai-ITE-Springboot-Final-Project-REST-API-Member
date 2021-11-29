@@ -3,6 +3,7 @@ package com.mycompany.webapp.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.mycompany.webapp.dto.Cart;
 import com.mycompany.webapp.dto.Coupon;
@@ -21,4 +22,7 @@ public interface MemberDao {
 	public List<QnA> selectQnaList(String mid);
 	public int createWishList(WishList wish);
 	public int deleteWishList(WishList wish);
+	public int deleteCartItem(Cart mycart);
+	public int updateCart(Cart updatecart);
+	
 }
