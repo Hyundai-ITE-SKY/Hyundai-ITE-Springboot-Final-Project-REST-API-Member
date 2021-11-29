@@ -7,4 +7,5 @@ import com.mycompany.webapp.dto.Event;
 @Mapper
 public interface EventDao {
 	public Event getEvent(int eid);
+	public int updateEvent(Event event);
 }

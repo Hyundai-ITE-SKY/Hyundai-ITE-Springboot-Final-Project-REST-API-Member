@@ -130,6 +130,14 @@ public class MemberController {
 		String mid = request.getAttribute("mid").toString();
 		String ccode = eid+ "" + event.getEamount();
 		
+		// 이벤트 eamount가 0인 경우
+		int eamount = event.getEamount();
+		if(eamount == 0) { return 0; }
+		
+		event.setEamount(eamount-1);
+		//이벤트의 eamount-1
+		
+		
 		coupon.setCcode(ccode);
 		coupon.setEid(eid);
 		coupon.setMid(mid);

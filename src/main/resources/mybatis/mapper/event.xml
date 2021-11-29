@@ -6,4 +6,28 @@
 		from event
 		where eid=#{eid}
 	</select>
+	
+	<!-- <update id="updateEvent" parameterType="event">
+		UPDATE event 
+			SET eid=#{eid}, 
+				ename=#{ename},
+				edetail=#{edetail},
+				estartdate=TO_DATE(#{estartdate}, 'YYYY-MM-DD HH24:MI:SS'),
+				eenddate=TO_DATE(#{eenddate}, 'YYYY-MM-DD HH24:MI:SS'),
+				eamount=#{eamount},
+				elimit=#{elimit},
+				eimage=#{eimage}
+			WHERE eid=#{eid}
+	</update> -->
+	
+	<update id="updateEvent" parameterType="event">
+		UPDATE event 
+			SET eid=#{eid}, 
+				ename=#{ename},
+				edetail=#{edetail},
+				eamount=#{eamount},
+				elimit=#{elimit},
+				eimage=#{eimage}
+			WHERE eid=#{eid}
+	</update>
 </mapper>

@@ -19,4 +19,8 @@ public class EventService {
 	public Event getEvent(int eid) {
 		return eventDao.getEvent(eid);
 	}
+	
+	public int updateEvent(Event event) {
+		return eventDao.updateEvent(event);
+	}
 }
