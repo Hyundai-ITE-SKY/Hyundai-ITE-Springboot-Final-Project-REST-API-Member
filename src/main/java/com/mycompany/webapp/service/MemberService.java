@@ -106,6 +106,8 @@ public class MemberService {
 		memberDao.updateCart(updatecart);
 		
 	}
-
 	
+	public int createCoupon(Coupon coupon) {
+		return memberDao.createCoupon(coupon);
+	}
 }

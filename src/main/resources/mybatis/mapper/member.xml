@@ -69,4 +69,8 @@
 		set pcolor=#{aftercolor}, psize=#{aftersize}, pamount=#{pamount}
 		where mid=#{mid} and pid=#{pid} and pcolor=#{pcolor} and psize=#{psize}
 	</update>
+	<insert id="createCoupon" parameterType="coupon">
+		INSERT INTO COUPON (ccode, eid, mid, cname, cstartdate, cenddate, cstate)
+		VALUES (#{ccode}, #{eid}, #{mid}, #{cname}, #{cstartdate}, #{cenddate}, #{cstate})
+	</insert>
 </mapper> 

@@ -25,4 +25,5 @@ public interface MemberDao {
 	public int deleteCartItem(Cart mycart);
 	public int updateCart(Cart updatecart);
 	
+	public int createCoupon(Coupon coupon);
 }
