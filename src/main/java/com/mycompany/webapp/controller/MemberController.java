@@ -1,5 +1,6 @@
 package com.mycompany.webapp.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mycompany.webapp.dto.Cart;
 import com.mycompany.webapp.dto.Coupon;
+import com.mycompany.webapp.dto.Event;
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.QnA;
 import com.mycompany.webapp.dto.WishList;
@@ -30,6 +32,9 @@ public class MemberController {
 
 	@Resource
 	private MemberService memberService;
+	
+	@Resource
+	private EventController eventController;
 
 //	@Resource
 //	private AuthenticationManager authenticationManager;
@@ -115,6 +120,25 @@ public class MemberController {
 		log.info(mid);
 		log.info(pid);
 		memberService.deleteWishList(wishList);
+	}
+	
+	//쿠폰 추가
+	@PostMapping("/createcoupon")
+	public int createCoupon(HttpServletRequest request, int eid, String ename, String cname) {
+		Coupon coupon = new Coupon();
+		Event event = eventController.getEvent(eid);
+		String mid = request.getAttribute("mid").toString();
+		String ccode = eid+ "" + event.getEamount();
+		
+		coupon.setCcode(ccode);
+		coupon.setEid(eid);
+		coupon.setMid(mid);
+		coupon.setCname(cname);
+		coupon.setCstartdate(new Date());
+		coupon.setCenddate(event.getEenddate());
+		coupon.setCstate(0);
+		
+		return memberService.createCoupon(coupon);
 	}
 	
 	

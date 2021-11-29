@@ -21,4 +21,5 @@ public interface MemberDao {
 	public List<QnA> selectQnaList(String mid);
 	public int createWishList(WishList wish);
 	public int deleteWishList(WishList wish);
+	public int createCoupon(Coupon coupon);
 }

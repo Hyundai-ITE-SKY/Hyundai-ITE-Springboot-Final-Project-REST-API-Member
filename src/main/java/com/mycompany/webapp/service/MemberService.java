@@ -97,4 +97,8 @@ public class MemberService {
 	public void deleteWishList(WishList wish) {
 		memberDao.deleteWishList(wish);
 	}
+	
+	public int createCoupon(Coupon coupon) {
+		return memberDao.createCoupon(coupon);
+	}
 }

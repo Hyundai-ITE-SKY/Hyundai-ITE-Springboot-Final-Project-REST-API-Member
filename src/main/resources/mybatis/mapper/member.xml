@@ -54,4 +54,8 @@
 		DELETE FROM WISHLIST WHERE mid=#{mid} AND pid=#{pid}
 	</delete>
 	
+	<insert id="createCoupon" parameterType="coupon">
+		INSERT INTO COUPON (ccode, eid, mid, cname, cstartdate, cenddate, cstate)
+		VALUES (#{ccode}, #{eid}, #{mid}, #{cname}, #{cstartdate}, #{cenddate}, #{cstate})
+	</insert>
 </mapper> 
