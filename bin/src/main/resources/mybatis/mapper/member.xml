@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mycompany.webapp.dao.MemberDao">
+	<insert id="insert" parameterType="member">
+		INSERT INTO member 
+		(mid, mname, mpassword, menabled, mgrade, memail) 
+		VALUES(#{mid}, #{mname}, #{mpassword}, #{menabled}, #{mgrade}, #{memail})
+	</insert>
+		
+	<select id="selectByMid" parameterType="string" resultType="member">
+		SELECT mid, mname, mpassword, menabled, mgrade, memail, mrole
+		FROM member
+		WHERE mid=#{mid}
+	</select>
+	
+	<select id="selectInfoByMid" parameterType="string" resultType="member">
+		select mid, mname, mtel, mzipcode, maddress1, maddress2, mgrade, mdate, mpoint, mrole
+		from member
+		where mid=#{mid}
+	</select>
+	
+	<select id="selectWishlist" parameterType="string" resultType="wishlist">
+		select mid, pid
+		from wishlist
+		where mid=#{mid}
+		order by pid
+	</select>
+	
+	<select id="selectCouponlist" parameterType="string" resultType="coupon">
+		select ccode, eid, mid, cname, cstartdate, cenddate, cstate
+		from coupon
+		where mid=#{mid}
+	</select>
+	
+	<select id="selectMycart" parameterType="string" resultType="mycart">
+		select mid, pid, psize, pcolor, pamount
+		from mycart
+		where mid=#{mid}
+	</select>
+	
+	<select id="selectQnaList" parameterType="string" resultType="qna">
+		select qid, mid, qtitle, qcontent, qdate, qreplydate, qreplytitle, qreplycontent, qmanager
+		from qna
+		where mid=#{mid}
+	</select>
+	
+	<insert id="createWishList" parameterType="wishlist">
+		INSERT INTO WISHLIST (mid, pid)
+		VALUES (#{mid}, #{pid})
+	</insert>
+	
+	<delete id="deleteWishList" parameterType="wishlist">
+		DELETE FROM WISHLIST WHERE mid=#{mid} AND pid=#{pid}
+	</delete>
+	
+	<delete id="deleteCartItem" parameterType="mycart">
+		DELETE FROM MYCART WHERE mid=#{mid} and pid=#{pid} and pcolor=#{pcolor} and psize=#{psize}
+	</delete>
+	
+	<select id="selectMycartitem" parameterType="string" resultType="mycart">
+		select mid, pid, psize, pcolor, pamount
+		from mycart
+		where mid=#{mid}
+	</select>
+	
+	<update id="updateCart" parameterType="mycart">
+		update mycart
+		set pcolor=#{aftercolor}, psize=#{aftersize}, pamount=#{pamount}
+		where mid=#{mid} and pid=#{pid} and pcolor=#{pcolor} and psize=#{psize}
+	</update>
+	<insert id="createCoupon" parameterType="coupon">
+		INSERT INTO COUPON (ccode, eid, mid, cname, cstartdate, cenddate, cstate)
+		VALUES (#{ccode}, #{eid}, #{mid}, #{cname}, #{cstartdate}, #{cenddate}, #{cstate})
+	</insert>
+</mapper> 

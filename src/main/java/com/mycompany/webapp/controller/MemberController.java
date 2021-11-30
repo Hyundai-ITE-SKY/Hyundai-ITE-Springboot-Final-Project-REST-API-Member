@@ -181,9 +181,19 @@ public class MemberController {
 		int eamount = event.getEamount();
 		if(eamount == 0) { return 0; }
 		
+		//eno와 mid가 중복될 경우
+		List<Coupon> coupons = getCouponList(request);
+		log.info(coupons+"");
+		for(Coupon cou : coupons) {
+			if(cou.getEid() == eid) {
+				log.info("중복 쿠폰 발급");
+				return 2;
+			}
+		}
+		
 		event.setEamount(eamount-1);
 		//이벤트의 eamount-1
-		
+		eventController.updateEvent(event);
 		
 		coupon.setCcode(ccode);
 		coupon.setEid(eid);
