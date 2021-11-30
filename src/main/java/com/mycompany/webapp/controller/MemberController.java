@@ -165,7 +165,7 @@ public class MemberController {
 		
 		event.setEamount(eamount-1);
 		//이벤트의 eamount-1
-		
+		eventController.updateEvent(event);
 		
 		coupon.setCcode(ccode);
 		coupon.setEid(eid);
