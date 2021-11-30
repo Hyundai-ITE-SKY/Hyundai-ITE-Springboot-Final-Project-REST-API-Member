@@ -24,6 +24,6 @@ public interface MemberDao {
 	public int deleteWishList(WishList wish);
 	public int deleteCartItem(Cart mycart);
 	public int updateCart(Cart updatecart);
-	
 	public int createCoupon(Coupon coupon);
+	public int insertCart(Cart mycart);
 }

@@ -110,4 +110,8 @@ public class MemberService {
 	public int createCoupon(Coupon coupon) {
 		return memberDao.createCoupon(coupon);
 	}
+
+	public void addtocart(Cart mycart) {
+		memberDao.insertCart(mycart);
+	}
 }

@@ -151,6 +151,24 @@ public class MemberController {
 		map.put("result", "success");
 		return map;
 	}
+	
+	//장바구니 추가
+	@PostMapping("/createcart")
+	public Map<String, String> addToCart(HttpServletRequest request, Cart cart) {
+		String mid = request.getAttribute("mid").toString();
+		Cart mycart = new Cart();
+		mycart.setMid(mid);
+		mycart.setPid(cart.getPid());
+		mycart.setPcolor(cart.getPcolor());
+		mycart.setPsize(cart.getPsize());
+		mycart.setPamount(cart.getPamount());
+		memberService.addtocart(mycart);
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("result", "success");
+		return map;
+	}
+	
 	//쿠폰 추가
 	@PostMapping("/createcoupon")
 	public int createCoupon(HttpServletRequest request, int eid, String ename, String cname) {

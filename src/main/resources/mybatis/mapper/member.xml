@@ -58,19 +58,19 @@
 		DELETE FROM MYCART WHERE mid=#{mid} and pid=#{pid} and pcolor=#{pcolor} and psize=#{psize}
 	</delete>
 	
-	<select id="selectMycartitem" parameterType="string" resultType="mycart">
-		select mid, pid, psize, pcolor, pamount
-		from mycart
-		where mid=#{mid}
-	</select>
-	
 	<update id="updateCart" parameterType="mycart">
 		update mycart
 		set pcolor=#{aftercolor}, psize=#{aftersize}, pamount=#{pamount}
 		where mid=#{mid} and pid=#{pid} and pcolor=#{pcolor} and psize=#{psize}
 	</update>
+	
 	<insert id="createCoupon" parameterType="coupon">
 		INSERT INTO COUPON (ccode, eid, mid, cname, cstartdate, cenddate, cstate)
 		VALUES (#{ccode}, #{eid}, #{mid}, #{cname}, #{cstartdate}, #{cenddate}, #{cstate})
+	</insert>
+	
+	<insert id="insertCart" parameterType="mycart">
+		insert into mycart(mid, pid, pcolor, psize, pamount)
+		values (#{mid}, #{pid}, #{pcolor}, #{psize}, #{pamount})
 	</insert>
 </mapper> 
