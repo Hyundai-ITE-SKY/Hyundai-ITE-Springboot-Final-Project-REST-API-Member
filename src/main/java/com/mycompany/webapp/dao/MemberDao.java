@@ -26,4 +26,6 @@ public interface MemberDao {
 	public int updateCart(Cart updatecart);
 	public int createCoupon(Coupon coupon);
 	public int insertCart(Cart mycart);
+	public int updateCoupon(Coupon coupon);
+	public int updatePoint(Member member);
 }

@@ -170,7 +170,7 @@ public class MemberController {
 	}
 	
 	//쿠폰 추가
-	@PostMapping("/createcoupon")
+	/*@PostMapping("/createcoupon")
 	public int createCoupon(HttpServletRequest request, int eid, String ename, String cname) {
 		Coupon coupon = new Coupon();
 		Event event = eventController.getEvent(eid);
@@ -204,7 +204,62 @@ public class MemberController {
 		coupon.setCstate(0);
 		
 		return memberService.createCoupon(coupon);
+	}*/
+	
+	@PostMapping("/createcoupon")
+	public int createCoupon(HttpServletRequest request, Coupon coupon) {
+		Event event = eventController.getEvent(coupon.getEid());
+		String mid = request.getAttribute("mid").toString();
+		String ccode = coupon.getEid()+ "" + event.getEamount();
+		
+		log.info(coupon.toString());
+		
+		// 이벤트 eamount가 0인 경우
+		int eamount = event.getEamount();
+		if(eamount == 0) { return 0; }
+		
+		//eno와 mid가 중복될 경우
+		List<Coupon> coupons = getCouponList(request);
+		//log.info(coupons+"");
+		for(Coupon cou : coupons) {
+			if(cou.getEid() == coupon.getEid()) {
+				log.info("중복 쿠폰 발급");
+				return 2;
+			}
+		}
+		
+		event.setEamount(eamount-1);
+		//이벤트의 eamount-1
+		eventController.updateEvent(event);
+		
+		coupon.setCcode(ccode);
+		coupon.setEid(coupon.getEid());
+		coupon.setMid(mid);
+		coupon.setCname(coupon.getCname());
+		coupon.setCstartdate(new Date());
+		coupon.setCenddate(event.getEenddate());
+		coupon.setCstate(0);
+		
+		return memberService.createCoupon(coupon);
 	}
 	
+	//update coupon
+	@PostMapping("/updatecoupon")
+	public int updateCoupon(String ccode, int cstate) {
+		Coupon coupon = new Coupon();
+		coupon.setCcode(ccode);
+		coupon.setCstate(cstate);
+		return memberService.updateCoupon(coupon);
+	}
 	
+	//update mileage
+	@PostMapping("/updatepoint")
+	public int updatePoint(HttpServletRequest request, int point) {
+		Member member = new Member();
+		String mid = request.getAttribute("mid").toString();
+		
+		member.setMid(mid);
+		member.setMpoint(point);
+		return memberService.updatePoint(member);
+	}
 }

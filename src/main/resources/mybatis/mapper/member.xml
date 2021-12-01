@@ -54,6 +54,18 @@
 		DELETE FROM WISHLIST WHERE mid=#{mid} AND pid=#{pid}
 	</delete>
 	
+	<update id="updateCoupon" parameterType="coupon">
+		UPDATE COUPON
+		SET cstate=#{cstate}
+		WHERE ccode=#{ccode}
+	</update>
+	
+	<update id="updatePoint" parameterType="member">
+		UPDATE MEMBER
+		SET mpoint=#{mpoint}
+		WHERE mid=#{mid}
+	</update>
+	
 	<delete id="deleteCartItem" parameterType="mycart">
 		DELETE FROM MYCART WHERE mid=#{mid} and pid=#{pid} and pcolor=#{pcolor} and psize=#{psize}
 	</delete>
@@ -63,7 +75,7 @@
 		set pcolor=#{aftercolor}, psize=#{aftersize}, pamount=#{pamount}
 		where mid=#{mid} and pid=#{pid} and pcolor=#{pcolor} and psize=#{psize}
 	</update>
-	
+		
 	<insert id="createCoupon" parameterType="coupon">
 		INSERT INTO COUPON (ccode, eid, mid, cname, cstartdate, cenddate, cstate)
 		VALUES (#{ccode}, #{eid}, #{mid}, #{cname}, #{cstartdate}, #{cenddate}, #{cstate})

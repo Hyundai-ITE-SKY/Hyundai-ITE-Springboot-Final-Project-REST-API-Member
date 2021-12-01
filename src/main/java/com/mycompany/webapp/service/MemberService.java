@@ -114,4 +114,12 @@ public class MemberService {
 	public void addtocart(Cart mycart) {
 		memberDao.insertCart(mycart);
 	}
+	
+	public int updateCoupon(Coupon coupon) {
+		return memberDao.updateCoupon(coupon);
+	}
+	
+	public int updatePoint(Member member) {
+		return memberDao.updatePoint(member);
+	}
 }
