@@ -262,4 +262,5 @@ public class MemberController {
 		member.setMpoint(point);
 		return memberService.updatePoint(member);
 	}
+		
 }
