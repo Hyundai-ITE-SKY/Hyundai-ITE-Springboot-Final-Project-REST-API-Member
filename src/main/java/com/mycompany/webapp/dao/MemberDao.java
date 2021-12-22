@@ -28,4 +28,5 @@ public interface MemberDao {
 	public int insertCart(Cart mycart);
 	public int updateCoupon(Coupon coupon);
 	public int updatePoint(Member member);
+	public int selectMycartAmount(String mid);
 }

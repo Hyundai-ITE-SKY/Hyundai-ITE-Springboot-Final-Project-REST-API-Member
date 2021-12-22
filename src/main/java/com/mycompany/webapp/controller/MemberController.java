@@ -262,5 +262,10 @@ public class MemberController {
 		member.setMpoint(point);
 		return memberService.updatePoint(member);
 	}
-		
+	
+	@GetMapping("/mycartNum")
+	public int getMycartAmount(HttpServletRequest request) {
+		String mid = request.getAttribute("mid").toString();
+		return memberService.getMycartAmount(mid);
+	}
 }

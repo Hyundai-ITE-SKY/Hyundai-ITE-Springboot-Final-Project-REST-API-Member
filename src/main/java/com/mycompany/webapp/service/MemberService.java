@@ -122,4 +122,8 @@ public class MemberService {
 	public int updatePoint(Member member) {
 		return memberDao.updatePoint(member);
 	}
+
+	public int getMycartAmount(String mid) {
+		return memberDao.selectMycartAmount(mid);
+	}
 }

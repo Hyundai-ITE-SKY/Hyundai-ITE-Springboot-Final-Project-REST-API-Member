@@ -85,4 +85,10 @@
 		insert into mycart(mid, pid, pcolor, psize, pamount)
 		values (#{mid}, #{pid}, #{pcolor}, #{psize}, #{pamount})
 	</insert>
+	
+	<select id="selectMycartAmount" resultType="int">
+		select count(*)
+		from mycart
+		where mid=#{mid}
+	</select>
 </mapper> 
