@@ -1,5 +1,7 @@
 package com.mycompany.webapp.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mycompany.webapp.dto.Event;
+import com.mycompany.webapp.dto.Events;
 import com.mycompany.webapp.service.EventService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,4 +36,9 @@ public class EventController {
 		return eventService.updateEvent(event);
 	}
 	
+	@GetMapping("/list")
+	public List<Event> getEvents() {
+		List<Event> events = eventService.getEvents();
+		return events;
+	}
 }

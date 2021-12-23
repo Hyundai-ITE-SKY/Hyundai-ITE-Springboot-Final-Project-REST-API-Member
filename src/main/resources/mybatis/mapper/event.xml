@@ -30,4 +30,11 @@
 				eimage=#{eimage}
 			WHERE eid=#{eid}
 	</update>
+	
+	<select id="getEvents" resultType="event">
+		SELECT eid, ename, edetail,
+				estartdate, eenddate, eamount, elimit,
+				eimage, eorder
+		FROM event
+	</select>
 </mapper>
