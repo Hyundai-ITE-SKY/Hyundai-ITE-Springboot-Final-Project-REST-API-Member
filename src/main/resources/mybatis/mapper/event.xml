@@ -36,5 +36,6 @@
 				estartdate, eenddate, eamount, elimit,
 				eimage, eorder
 		FROM event
+		ORDER BY eorder
 	</select>
 </mapper>
