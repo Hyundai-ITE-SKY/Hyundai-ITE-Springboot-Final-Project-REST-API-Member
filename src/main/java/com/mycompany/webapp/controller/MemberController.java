@@ -220,7 +220,6 @@ public class MemberController {
 		
 		//eno와 mid가 중복될 경우
 		List<Coupon> coupons = getCouponList(request);
-		//log.info(coupons+"");
 		for(Coupon cou : coupons) {
 			if(cou.getEid() == coupon.getEid()) {
 				log.info("중복 쿠폰 발급");
@@ -229,9 +228,6 @@ public class MemberController {
 		}
 		
 		event.setEamount(eamount-1);
-		//이벤트의 eamount-1
-		eventController.updateEvent(event);
-		
 		coupon.setCcode(ccode);
 		coupon.setEid(coupon.getEid());
 		coupon.setMid(mid);
@@ -240,7 +236,9 @@ public class MemberController {
 		coupon.setCenddate(event.getEenddate());
 		coupon.setCstate(0);
 		
-		return memberService.createCoupon(coupon);
+		//이벤트의 eamount-1
+		memberService.createCoupon(coupon, event);
+		return 1;
 	}
 	
 	//update coupon

@@ -5,11 +5,14 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mycompany.webapp.controller.MemberController;
+import com.mycompany.webapp.dao.EventDao;
 import com.mycompany.webapp.dao.MemberDao;
 import com.mycompany.webapp.dto.Cart;
 import com.mycompany.webapp.dto.Coupon;
+import com.mycompany.webapp.dto.Event;
 import com.mycompany.webapp.dto.Member;
 import com.mycompany.webapp.dto.QnA;
 import com.mycompany.webapp.dto.WishList;
@@ -30,6 +33,10 @@ public class MemberService {
 
 	@Resource
 	private MemberDao memberDao;
+	
+	@Resource
+	private EventDao eventDao;
+
 
 	// 회원 가입을 처리하는 비즈니스 메소드(로직)
 	public JoinResult join(Member member) {
@@ -107,8 +114,16 @@ public class MemberService {
 		
 	}
 	
-	public int createCoupon(Coupon coupon) {
-		return memberDao.createCoupon(coupon);
+	@Transactional
+	public int createCoupon(Coupon coupon, Event event) {
+		try {
+			eventDao.updateEvent(event);
+			memberDao.createCoupon(coupon);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 1;
 	}
 
 	public void addtocart(Cart mycart) {
